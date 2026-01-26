@@ -15,6 +15,7 @@ class Product(Model):
     cpu: Mapped[Optional[str]] = mapped_column(String(32))
 
     def __repr__(self):
-        return f'''Product({self.id}, "{self.name}", "{self.manufacturer}",
-        {self.year}, "{self.country}", "{self.cpu}")'''
+        return f'Product({self.id}, "{self.name}", "{self.manufacturer}", {self.year}, "{self.country}", "{self.cpu}")'
+
+
 
