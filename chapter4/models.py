@@ -30,7 +30,7 @@ class Product(Model):
         secondary=ProductCountry, back_populates='products')
 
     def __repr__(self):
-        return f'Product({self.id}, "{self.name}")'
+        return f'Product({self.id}, "{self.name}", "{self.manufacturer}", {self.year}, "{self.country}", "{self.cpu}")'
 
 
 class Manufacturer(Model):
