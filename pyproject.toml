@@ -1,0 +1,28 @@
+[project]
+name = "retrofun"
+version = "0.1.0"
+description = "Code examples for SQLAlchemy 2 In Practice"
+requires-python = ">=3.10"
+dependencies = [
+    "aiosqlite>=0.18.0",
+    "alembic>=1.9.4",
+    "greenlet>=2.0.2",
+    "mako>=1.2.4",
+    "markupsafe>=2.1.2",
+    "python-dotenv>=1.0.0",
+    "sqlalchemy>=2.0.4",
+    "typing-extensions>=4.5.0",
+]
+
+[project.optional-dependencies]
+fastapi = [
+    "alchemical>=1.0.1",
+    "fastapi>=0.92.0",
+    "pydantic>=1.10.5",
+    "uvicorn>=0.20.0",
+]
+flask = [
+    "alchemical>=1.0.1",
+    "flask>=2.2.3",
+    "gunicorn>=20.1.0",
+]
