@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 from uuid import UUID, uuid4
 from sqlalchemy import String, Text, ForeignKey, Table, Column
@@ -69,7 +69,7 @@ class Order(Model):
     __tablename__ = 'orders'
 
     id: Mapped[UUID] = mapped_column(default=uuid4, primary_key=True)
-    timestamp: Mapped[datetime] = mapped_column(default=datetime.utcnow,
+    timestamp: Mapped[datetime] = mapped_column(default=datetime.now(timezone.utc),
                                                 index=True)
     customer_id: Mapped[UUID] = mapped_column(ForeignKey('customers.id'),
                                               index=True)
@@ -119,7 +119,7 @@ class ProductReview(Model):
                                             primary_key=True)
     customer_id: Mapped[UUID] = mapped_column(ForeignKey('customers.id'),
                                               primary_key=True)
-    timestamp: Mapped[datetime] = mapped_column(default=datetime.utcnow,
+    timestamp: Mapped[datetime] = mapped_column(default=datetime.now(timezone.utc),
                                                 index=True)
     rating: Mapped[int]
     comment: Mapped[Optional[str]] = mapped_column(Text)
