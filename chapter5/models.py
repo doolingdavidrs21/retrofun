@@ -32,8 +32,8 @@ class Product(Model):
         secondary=ProductCountry, back_populates='products')
     order_items: WriteOnlyMapped['OrderItem'] = relationship(
         back_populates='product')
-    reviews: WriteOnlyMapped['ProductReview'] = relationship(
-        back_populates='product')
+  #  reviews: WriteOnlyMapped['ProductReview'] = relationship(
+  #      back_populates='product')
 
     def __repr__(self):
         return f'Product({self.id}, "{self.name}", "{self.manufacturer}", {self.year}, {self.countries}, "{self.cpu}")'
@@ -91,8 +91,8 @@ class Customer(Model):
     phone: Mapped[Optional[str]] = mapped_column(String(32))
 
     orders: WriteOnlyMapped['Order'] = relationship(back_populates='customer')
-    product_reviews: WriteOnlyMapped['ProductReview'] = relationship(
-        back_populates='customer')
+  #  product_reviews: WriteOnlyMapped['ProductReview'] = relationship(
+  #      back_populates='customer')
 
     def __repr__(self):
         return f'Customer({self.id.hex}, "{self.name}")'
@@ -112,18 +112,18 @@ class OrderItem(Model):
     order: Mapped['Order'] = relationship(back_populates='order_items')
 
 
-class ProductReview(Model):
-    __tablename__ = 'product_reviews'
+# class ProductReview(Model):
+#     __tablename__ = 'product_reviews'
 
-    product_id: Mapped[int] = mapped_column(ForeignKey('products.id'),
-                                            primary_key=True)
-    customer_id: Mapped[UUID] = mapped_column(ForeignKey('customers.id'),
-                                              primary_key=True)
-    timestamp: Mapped[datetime] = mapped_column(default=datetime.utcnow,
-                                                index=True)
-    rating: Mapped[int]
-    comment: Mapped[Optional[str]] = mapped_column(Text)
+#     product_id: Mapped[int] = mapped_column(ForeignKey('products.id'),
+#                                             primary_key=True)
+#     customer_id: Mapped[UUID] = mapped_column(ForeignKey('customers.id'),
+#                                               primary_key=True)
+#     timestamp: Mapped[datetime] = mapped_column(default=datetime.utcnow,
+#                                                 index=True)
+#     rating: Mapped[int]
+#     comment: Mapped[Optional[str]] = mapped_column(Text)
 
-    product: Mapped['Product'] = relationship(back_populates='reviews')
-    customer: Mapped['Customer'] = relationship(
-        back_populates='product_reviews')
+#     product: Mapped['Product'] = relationship(back_populates='reviews')
+#     customer: Mapped['Customer'] = relationship(
+#         back_populates='product_reviews')
