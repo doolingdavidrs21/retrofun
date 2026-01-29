@@ -36,7 +36,7 @@ class Product(Model):
         back_populates='product')
 
     def __repr__(self):
-        return f'Product({self.id}, "{self.name}")'
+        return f'Product({self.id}, "{self.name}", "{self.manufacturer}", {self.year}, {self.countries}, "{self.cpu}")'
 
 
 class Manufacturer(Model):
